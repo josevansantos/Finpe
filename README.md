@@ -2,7 +2,7 @@
 
 Finpe is a web program for personal finance control developed with HTML, CSS, Javascript, Node.js and React
 
-## Installation
+<!-- ## Installation
 
 Use.
 
@@ -10,7 +10,7 @@ Use.
 npm run dev
 ```
 
-## Usage
+## Usage -->
 
 
 ## License
