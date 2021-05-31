@@ -1,8 +1,31 @@
+/* VARIBLES */
+
+:root{
+  --background: #EEF0F3;
+  --color-main: #4CBC5C;
+  --color-one: #F7F6F5;
+  --color-two: #3283C3;
+  --color-three: #F0534A;
+  --color-four: #601AF0;
+  --font-color: #545355;
+  --link-color: #00B7FF;
+}
+
 body {
-  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 a {
-  color: #00B7FF;
+  color: var(--link-color);
 }

@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+
+main{
+    border: solid var(--color-two);
+    background: var(--color-one);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
