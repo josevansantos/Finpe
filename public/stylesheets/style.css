@@ -1,35 +1,34 @@
-<<<<<<< HEAD
-/* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing:border-box;
-}
-
-/* Backgroud */
-body{
-  background-color: #EEF0F3;
-=======
 /* VARIBLES */
 
 :root{
-  --background: #EEF0F3;
+  --background-one: #FFFFFF;
+  --background-two: #2DA5A8;
+  --background-three: #EEF0F3;
+  --background-four: #F5F5F5;
+  --background-five: #C2C2C2;
   --color-main: #4CBC5C;
   --color-one: #F7F6F5;
   --color-two: #3283C3;
-  --color-three: #F0534A;
+  --color-three: #F54E4E;
   --color-four: #601AF0;
   --font-color: #545355;
   --link-color: #00B7FF;
 }
 
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--background);
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: var(--background-five);
+  font-family: 'Inter', sans-serif;
+}
+
+img{
+  border-radius: 1em;
+ margin-top: 5em;
 }
 
 section{
@@ -41,6 +40,5 @@ section{
 
 a {
   color: var(--link-color);
->>>>>>> f21c565069b75e5dd998fc951e1652b3f4bb03b0
 }
 

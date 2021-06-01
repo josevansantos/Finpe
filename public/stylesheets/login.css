@@ -1,15 +1,38 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--background);
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background-five);
+}
+img{
+  border-radius: 1em;
+  margin-top: 5em;
+}
 
-main{
-    border: solid var(--color-two);
-    background: var(--color-one);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30em;
+  border-radius: 1em;
+}
+
+.login-page{
+  background: var(--background-three);
+}
+
+button{
+  background-color: var(--color-main);
+  height: 5em;
+  width: 20em;
+  margin-top: 25px;
+  border-radius: 0.5em;
+
 }
