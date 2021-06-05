@@ -2,11 +2,24 @@ const Modal = {
   open() {
     // Abrir modal
     // Adicionar a class active ao modal
-    document.querySelector(".modal-overlay").classList.add("active");
+    document.querySelector(".modal-transaction").classList.add("active");
   },
   close() {
     // fechar o modal
     // remover a class active do modal
-    document.querySelector(".modal-overlay").classList.remove("active");
+    document.querySelector(".modal-transaction").classList.remove("active");
+  },
+};
+
+const ModalRegister = {
+  open() {
+    // Abrir modal
+    // Adicionar a class active ao modal
+    document.querySelector(".modal-register").classList.add("active");
+  },
+  close() {
+    // fechar o modal
+    // remover a class active do modal
+    document.querySelector(".modal-register").classList.remove("active");
   },
 };
