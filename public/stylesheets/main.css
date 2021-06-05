@@ -291,11 +291,11 @@ td.expense {
 
 
 /* Form ===================== */
-#form {
+.form {
   max-width: 500px;
 }
 
-#form h2 {
+.form h2 {
   margin-top: 0;
 }
 
@@ -331,10 +331,10 @@ input {
 /* Footer ===================== */
 footer {
   text-align: center;
-  padding: 4rem 0 2rem;
+  padding: 10rem 0 2rem;
   color: var(--dark-blue);
 
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 
