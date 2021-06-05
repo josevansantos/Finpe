@@ -23,3 +23,5 @@ const ModalRegister = {
     document.querySelector(".modal-register").classList.remove("active");
   },
 };
+
+
