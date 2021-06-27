@@ -3,18 +3,12 @@
 /* VARIBLES */
 
 :root{
-  --background-one: #FFFFFF;
-  --background-two: #2DA5A8;
-  --background-three: #EEF0F3;
-  --background-four: #F5F5F5;
-  --background-five: #C2C2C2;
-  --color-main: #4CBC5C;
-  --color-one: #F7F6F5;
-  --color-two: #3283C3;
-  --color-three: #F54E4E;
-  --color-four: #601AF0;
-  --font-color: #545355;
-  --link-color: #00B7FF;
+  --background: #F0F1F5;
+  --color-one: #66CC99;
+  --color-two: #112233;
+  --color-three: #FC575E;
+  --color-four:#44BBFF;
+  --font: #545355;
 }
 
 
