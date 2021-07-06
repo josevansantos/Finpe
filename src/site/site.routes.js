@@ -1,15 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const SiteController = require("./SiteController");
+const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Finpe' });
-});
+router.get("/", SiteController.home);
 
-router.get('/login', function(req, res, next){
-  res.render('login')
-});
+router.get("/login", SiteController.login);
 
-router.get('/main', (req, res, next) => res.render('main'))
+router.get("/main", SiteController.main);
 
 module.exports = router;
