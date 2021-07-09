@@ -1,9 +1,10 @@
 const Sequelize = require("sequelize");
 const config = require("../config/config.json");
 
-const { dialect, host, port, database, user, password } = config.database;
+const { dialect, host, port, database, username, password } =
+  config.development;
 
-const sequelize = new Sequelize(database, user, password, {
+const sequelize = new Sequelize(database, username, password, {
   host,
   port,
   dialect,

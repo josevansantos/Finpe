@@ -1,13 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
-  const Transactions = sequelize.define('Transactions', {
-    description: DataTypes.STRING,
-    value: DataTypes.FLOAT,
-    type: DataTypes.STRING
-  },
-  {
-    tableName: "transactions",
-    timestamps: false,
-  }
+  const Transactions = sequelize.define(
+    "Transactions",
+    {
+      description: DataTypes.STRING,
+      value: DataTypes.FLOAT,
+      type: DataTypes.STRING,
+    },
+    {
+      tableName: "transactions",
+      timestamps: false,
+    }
   );
 
   // Transactions.associate = models => {
@@ -18,4 +20,4 @@ module.exports = (sequelize, DataTypes) => {
   // }
 
   return Transactions;
-}
+};
