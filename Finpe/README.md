@@ -1,17 +1,21 @@
 # Finpe
 
-Finpe is a web program for personal finance control developed with HTML, CSS, Javascript, Node.js and React
+## 💻 Projeto
 
-<!-- ## Installation
+O Finpe é uma aplicação para controle de gastos pessoais. É possível ter uma visualização das entradas, saídas e do saldo total.
 
-Use.
 
-```bash
-npm run dev
-```
+## 🚀 Tecnologias
 
-## Usage -->
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
+- HTML
+- CSS
+- JavaScript
+- NodeJS
+- EJS
+- Express
+- MySQL
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
