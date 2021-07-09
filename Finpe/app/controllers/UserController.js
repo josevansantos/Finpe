@@ -1,9 +1,9 @@
-const { Users } = require("../models/Users");
+const User = require("../models/Users");
 
 class UserController {
-  async index(req, res) {
+  async list(req, res) {
     try {
-      const users = await Users.findAll();
+      const users = await User.findAll();
 
       return res.json(users);
     } catch (err) {
@@ -13,7 +13,7 @@ class UserController {
 
   async show(req, res) {
     try {
-      const user = await Users.findByPk(req.params.id);
+      const user = await User.findByPk(req.params.id);
 
       return res.json(user);
     } catch (err) {
@@ -23,7 +23,7 @@ class UserController {
 
   async store(req, res) {
     try {
-      const user = await Users.create(req.body);
+      const user = await User.create(req.body);
 
       return res.json(user);
     } catch (err) {
@@ -33,7 +33,7 @@ class UserController {
 
   async update(req, res) {
     try {
-      const user = await Users.findByPk(req.params.id);
+      const user = await User.findByPk(req.params.id);
 
       await user.update(req.body);
 
@@ -45,7 +45,7 @@ class UserController {
 
   async destroy(req, res) {
     try {
-      const user = await Users.findByPk(req.params.id);
+      const user = await User.findByPk(req.params.id);
 
       await user.destroy();
 

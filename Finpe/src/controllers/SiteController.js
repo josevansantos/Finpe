@@ -1,4 +1,4 @@
-const { Transactions } = require("../../app/controllers/TransactionController");
+const Transaction = require("../../app/models/Transactions");
 // const { Users } = require("../../app/controllers/UserController");
 
 class SiteController {
@@ -11,7 +11,7 @@ class SiteController {
   }
 
   static async main(req, res) {
-    const transactions = await Transactions.findAll();
+    const transactions = await Transaction.findAll();
     res.render("main", { transactions });
   }
 }

@@ -1,12 +1,11 @@
-const { Transactions } = require("../models/Transactions");
+const Transactions = require("../models/Transactions");
 
 class TransactionController {
   async index(req, res) {
     try {
       const transactions = await Transactions.findAll();
 
-      let result = res.json(transactions);
-      return result;
+      return res.json(transactions);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
