@@ -1,5 +1,6 @@
 const express = require("express");
 const SiteController = require("../controllers/SiteController");
+const Transaction = require("../../app/controllers/TransactionController");
 const router = express.Router();
 
 /* GET home page. */
@@ -8,6 +9,8 @@ router.get("/", SiteController.home);
 // router.get("/login", SiteController.login);
 
 router.get("/main", SiteController.main);
+
+router.post("/main", Transaction.store);
 
 // routes.get("/users", SiteController.index);
 
