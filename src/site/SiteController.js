@@ -1,4 +1,4 @@
-const { Transactions } = require("../../models");
+const { Transactions } = require("../transactions/TransactionController");
 
 class SiteController {
   static home(req, res) {
