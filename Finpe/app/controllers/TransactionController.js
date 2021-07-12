@@ -1,11 +1,11 @@
-const Transactions = require("../models/Transactions");
+const { Transaction } = require("../models");
 
 class TransactionController {
   async index(req, res) {
     try {
-      const transactions = await Transactions.findAll();
+      const transactions = await Transaction.findAll();
 
-      return res.json(transactions);
+      return res.render("transactions", { transactions });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -13,7 +13,7 @@ class TransactionController {
 
   async show(req, res) {
     try {
-      const transaction = await Transactions.findByPk(req.params.id);
+      const transaction = await Transaction.findByPk(req.params.id);
 
       return res.json(transaction);
     } catch (err) {
@@ -23,7 +23,7 @@ class TransactionController {
 
   async store(req, res) {
     try {
-      const transaction = await Transactions.create(req.body);
+      const transaction = await Transaction.create(req.body);
 
       return res.json(transaction);
     } catch (err) {
@@ -33,7 +33,7 @@ class TransactionController {
 
   async update(req, res) {
     try {
-      const transaction = await Transactions.findByPk(req.params.id);
+      const transaction = await Transaction.findByPk(req.params.id);
 
       await transaction.update(req.body);
 
@@ -45,7 +45,7 @@ class TransactionController {
 
   async destroy(req, res) {
     try {
-      const transaction = await Transactions.findByPk(req.params.id);
+      const transaction = await Transaction.findByPk(req.params.id);
 
       await transaction.destroy();
 

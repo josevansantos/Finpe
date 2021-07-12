@@ -1,6 +1,5 @@
 const express = require("express");
-const SiteController = require("../controllers/SiteController");
-// const Transaction = require("../../app/controllers/TransactionController");
+const Transaction = require("../../app/controllers/TransactionController");
 const router = express.Router();
 
 /* GET home page. */
@@ -8,7 +7,7 @@ const router = express.Router();
 
 // router.get("/login", SiteController.login);
 
-router.get("/main", SiteController.main);
+router.get("/main", Transaction.index);
 
 // router.post("/main", Transaction.store);
 

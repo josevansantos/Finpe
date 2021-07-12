@@ -1,11 +1,11 @@
-const User = require("../models/Users");
+const User = require("../models/User");
 
 class UserController {
   async list(req, res) {
     try {
       const users = await User.findAll();
 
-      return res.json(users);
+      return res.render("users", { users });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
