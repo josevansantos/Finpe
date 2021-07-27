@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -16,7 +20,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      level: {
+      isAdmin: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
