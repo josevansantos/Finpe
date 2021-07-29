@@ -13,7 +13,6 @@ class TransactionController {
   async show(req, res) {
     try {
       const transaction = await transaction.findByPk(req.params.id);
-
       return res.json(transaction);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -23,7 +22,6 @@ class TransactionController {
   async store(req, res) {
     try {
       const transaction = await transaction.create(req.body);
-
       return res.json(transaction);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -33,9 +31,7 @@ class TransactionController {
   async update(req, res) {
     try {
       const transaction = await transaction.findByPk(req.params.id);
-
       await transaction.update(req.body);
-
       return res.json({ transaction });
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -45,9 +41,7 @@ class TransactionController {
   async destroy(req, res) {
     try {
       const transaction = await transaction.findByPk(req.params.id);
-
       await transaction.destroy();
-
       return res.json();
     } catch (err) {
       return res.status(400).json({ error: err.message });
