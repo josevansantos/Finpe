@@ -1,4 +1,4 @@
-const { user } = require('..database/models');
+const { user } = require('../database/models');
 
 class UserController {
   async index(req, res) {
