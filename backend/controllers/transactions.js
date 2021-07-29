@@ -1,9 +1,9 @@
-const { transaction } = require('../database/models');
+const { TransactionModel } = require('../database/models');
 
 class TransactionController {
   async index(req, res) {
     try {
-      const transactions = await transaction.findAll();
+      const transactions = await TransactionModel.findAll();
       return res.json(transactions);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -12,7 +12,7 @@ class TransactionController {
 
   async show(req, res) {
     try {
-      const transaction = await transaction.findByPk(req.params.id);
+      const transaction = await TransactionModel.findByPk(req.params.id);
       return res.json(transaction);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -21,7 +21,7 @@ class TransactionController {
 
   async store(req, res) {
     try {
-      const transaction = await transaction.create(req.body);
+      const transaction = await TransactionModel.create(req.body);
       return res.json(transaction);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -30,8 +30,8 @@ class TransactionController {
 
   async update(req, res) {
     try {
-      const transaction = await transaction.findByPk(req.params.id);
-      await transaction.update(req.body);
+      const transaction = await TransactionModel.findByPk(req.params.id);
+      await TransactionModel.update(req.body);
       return res.json({ transaction });
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -40,8 +40,8 @@ class TransactionController {
 
   async destroy(req, res) {
     try {
-      const transaction = await transaction.findByPk(req.params.id);
-      await transaction.destroy();
+      const transaction = await TransactionModel.findByPk(req.params.id);
+      await TransactionModel.destroy();
       return res.json();
     } catch (err) {
       return res.status(400).json({ error: err.message });

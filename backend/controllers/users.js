@@ -1,9 +1,9 @@
-const { user } = require('../database/models');
+const { UserModel } = require('../database/models');
 
 class UserController {
   async index(req, res) {
     try {
-      const users = await user.findAll();
+      const users = await UserModel.findAll();
       return res.json(users);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -12,7 +12,7 @@ class UserController {
 
   async show(req, res) {
     try {
-      const user = await user.findByPk(req.params.id);
+      const user = await UserModel.findByPk(req.params.id);
       return res.json(user);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -21,7 +21,7 @@ class UserController {
 
   async store(req, res) {
     try {
-      const user = await user.create(req.body);
+      const user = await UserModel.create(req.body);
       return res.json(user);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -30,8 +30,8 @@ class UserController {
 
   async update(req, res) {
     try {
-      const user = await user.findByPk(req.params.id);
-      await user.update(req.body);
+      const user = await UserModel.findByPk(req.params.id);
+      await UserModel.update(req.body);
       return res.json({ user });
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -40,8 +40,8 @@ class UserController {
 
   async destroy(req, res) {
     try {
-      const user = await user.findByPk(req.params.id);
-      await user.destroy();
+      const user = await UserModel.findByPk(req.params.id);
+      await UserModel.destroy();
       return res.json();
     } catch (err) {
       return res.status(400).json({ error: err.message });
