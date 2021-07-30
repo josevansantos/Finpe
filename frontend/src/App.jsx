@@ -1,29 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react' 
+import { useEffect, useState } from 'react';
+import React from 'react';
+
+import Transactions from './components/Transactions';
 
 function App() {
-
-const [dados, setDados] = useState([])
-
+  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/transactions`)
       .then((response) => response.json())
-      .then((data) => setDados(data));
+      .then((data) => setTransactions(data));
   }, []);
 
-  console.log("esse aqui", dados)
-
+  console.log('esse aqui =>', transactions);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        {dados.map((dado, index) =>
-        <div key={index} className="lista">
-          <p>
+        <Transactions transactions={ transactions } />
+        {/* {dados.map((dado, index) => (
+          <div key={index} className="lista">
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>{dado.date}</th>
+                  <br></br>
+                  <th>{dado.description}</th>
+                  <br></br>
+                  <th>{dado.value}</th>
+                  <br></br>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <p>
             {dado.description}
           </p>
           <p>
@@ -37,9 +48,8 @@ const [dados, setDados] = useState([])
           <p>
             {dado.type}
           </p>
-        </div>
-        )}
-      </header>
+          </div>
+        ))} */}
     </div>
   );
 }
