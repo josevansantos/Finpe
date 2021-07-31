@@ -1,57 +1,15 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import React from 'react';
-
+import React from 'react'
+import Header from './components/Header';
 import Transactions from './components/Transactions';
 
-function App() {
-  const [transactions, setTransactions] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/transactions`)
-      .then((response) => response.json())
-      .then((data) => setTransactions(data));
-  }, []);
-
-  console.log('esse aqui =>', transactions);
-
-  return (
-    <div className="App">
-        <Transactions transactions={ transactions } />
-        {/* {dados.map((dado, index) => (
-          <div key={index} className="lista">
-            <table id="data-table">
-              <thead>
-                <tr>
-                  <th>{dado.date}</th>
-                  <br></br>
-                  <th>{dado.description}</th>
-                  <br></br>
-                  <th>{dado.value}</th>
-                  <br></br>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <p>
-            {dado.description}
-          </p>
-          <p>
-            {dado.value}
-          </p>
-
-          <p>
-            {dado.date}
-          </p>
-
-          <p>
-            {dado.type}
-          </p>
-          </div>
-        ))} */}
+const App = () => (
+  <React.Fragment>
+    <Header />
+    <div className='container flex js-center'>
+      <Transactions />
     </div>
-  );
-}
+  </React.Fragment>
+);
 
 export default App;
