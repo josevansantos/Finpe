@@ -7,12 +7,23 @@ const basename = path.basename(__filename);
 const config = require(__dirname + '/../config/config.js');
 const db = {};
 
+//Configurando o sequelize
 let sequelize = new Sequelize(
   config.database,
   config.username,
   config.password,
   config
 );
+
+//Testando a conexão
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Conectado com sucesso!');
+  })
+  .catch((error) => {
+    console.log('Erro ao conectar com DB!', error);
+  });
 
 fs.readdirSync(__dirname)
   .filter((file) => {
