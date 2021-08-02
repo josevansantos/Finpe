@@ -1,7 +1,7 @@
-import './App.css';
+import './style.css';
 import React from 'react'
-import Header from './components/Header';
-import Transactions from './components/Transactions';
+import Header from '../../components/Header';
+import Transactions from '../../components/Transactions';
 
 const App = () => (
   <React.Fragment>
