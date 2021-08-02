@@ -1,17 +1,9 @@
 import './style.css';
 import React from 'react';
+import Menu from '../Menu';
 
 function Header() {
-  return (
-      <div className="menu">
-        <a href="#">visão geral</a>
-        <br/>
-        <a href="#">cadastrar novo usuário</a>
-        <br/>
-        <a href="#">sair</a>
-        <br/>
-      </div>
-  );
+  return <Menu />;
 }
 
 export default Header;
