@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #49AA26;
+    padding: 2rem;
+    text-align: center;
+    width: 100vw;
+    height: 5em;
+}
+
+a {
+    color: #ffffff;
+    margin: 10px;
+    text-decoration: none;
+}
