@@ -5,7 +5,7 @@ import React from 'react';
 const CreateUser = () => {
   return (
     <div className="user-login">
-      <h1 className="user-login__title">Cadastrar Usuário</h1>
+      <h1 className="create-user__title">Cadastrar Usuário</h1>
       <form autoComplete="nope">
         <div className="user-login__form-control">
           <label htmlFor="email">Nome</label>
