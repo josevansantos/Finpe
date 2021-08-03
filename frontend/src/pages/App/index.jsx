@@ -1,16 +1,30 @@
 import './style.css';
-import React from 'react'
-import Header from '../../components/Header';
-import Transactions from '../../components/Transactions';
+import React from 'react';
 import UserLogin from '../Login';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import CreateUser from '../../components/Cadastro';
+import CreateTransaction from '../../components/CreateTransaction';
+import Home from '../Home';
 
 const App = () => (
   <React.Fragment>
-    <UserLogin />
-    <Header />
-    <div className='container flex js-center'>
-      <Transactions />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/login" component={UserLogin} />
+        <Route exact path="/create" component={CreateUser} />
+        <Route exact path="/app" component={Home} />{' '}
+        {/* criar um componente Home e encapsular o header e transactions */}
+        <Route exact path="/transaction" component={CreateTransaction} />
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
+      </Switch>
+    </Router>
   </React.Fragment>
 );
 
