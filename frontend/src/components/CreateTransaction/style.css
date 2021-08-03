@@ -1,0 +1,55 @@
+.modal-transaction {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(250, 250, 250, 0.6);
+
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 999;
+}
+
+.modal-transaction.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #cdcdcd;
+    padding: 2.4rem;
+
+    position: relative;
+    z-index: 1;
+}
+
+.modal-register {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.7);
+
+    position: fixed;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 999;
+}
+
+.modal-register.active {
+    opacity: 1;
+    visibility: visible;
+}

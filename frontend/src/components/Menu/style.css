@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-  }
+}
 
 .menu {
     display: flex;
@@ -26,6 +26,20 @@
 }
 
 
-.menu a:hover{
+.menu a:hover {
+    background: #00000020;
+}
+
+.button-menu {
+    background-color: #49AA26;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 20px;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+}
+
+.button-menu:hover {
     background: #00000020;
 }
