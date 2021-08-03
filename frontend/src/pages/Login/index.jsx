@@ -5,8 +5,8 @@ import React from 'react';
 const UserLogin = () => {
   return (
     <div className="user-login__container">
-      <h1 className="user-login__title">Login</h1>
       <div className="user-login">
+      <h1 className="user-login__title">Login</h1>
         <form autoComplete="nope">
           <div className="user-login__form-control">
             <label htmlFor="email">E-mail</label>
