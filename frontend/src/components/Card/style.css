@@ -1,16 +1,22 @@
-.balance{
+.balance {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100vw;
+    height: 100%;
 }
 
 .card {
-    background: white;
-    padding: 1.5rem 2rem;
+    border: .1rem solid black;
+    background: #FFFFFF;
+    padding: 2em;
     border-radius: 0.25rem;
-    margin: 2rem;
-    color: #fff;
+    margin: 2em;
+    color: #000;
+    box-shadow: -10px 10px 10px 1px rgba(0, 0, 0, 0.25);
+    width: 400px;
+
 }
 
 .card h3 {
@@ -19,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: aliceblue;
+    color: #545355;
 }
 
 .card p {
@@ -27,16 +33,17 @@
     line-height: 3rem;
     white-space: nowrap;
     margin-top: 1rem;
+    color: #0D114F;
 }
 
-.entrada {
-    background-color: #4CBC5C;
+.entrada p {
+    color: #4CBC5C;
 }
 
-.saida{
-    background-color: #F0534A;
+.saida p {
+    color: #F0534A;
 }
 
-.total{
-    background-color: #3283C3;
+.total p {
+    color: #3283C3;
 }

@@ -1,28 +1,27 @@
+import './style.css';
 import React from 'react';
 
 const formatDate = (date) => {
-  const newDate = new Date(date)
+  const newDate = new Date(date);
   // corrigindo UTC
-  newDate.setHours(newDate.getHours() + (newDate.getTimezoneOffset() / 60))
+  newDate.setHours(newDate.getHours() + newDate.getTimezoneOffset() / 60);
 
-  const formatter = new Intl.DateTimeFormat('pt-BR')
-  
-  return formatter.format(newDate)
+  const formatter = new Intl.DateTimeFormat('pt-BR');
+
+  return formatter.format(newDate);
 };
 
 const formatValue = (value) => {
-  
   const formatter = new Intl.NumberFormat('pt-BR', {
-   style: 'currency',
-   currency: 'BRL'
-  })
+    style: 'currency',
+    currency: 'BRL',
+  });
 
-  return formatter.format(value)
-
-}
+  return formatter.format(value);
+};
 
 const Transaction = ({ transaction }) => (
-  <tr>
+  <tr className={transaction.type}>
     <td>{formatDate(transaction.date)}</td>
     <td>{transaction.description}</td>
     <td>{formatValue(transaction.value)}</td>

@@ -29,15 +29,3 @@
       background: white;
       padding: 1rem 2rem;
   }
-
-  td.description {
-      color: #363f5f;
-  }
-
-  td.income {
-      color: #12a454;
-  }
-
-  td.expense {
-      color: #e92929;
-  }

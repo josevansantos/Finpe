@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 import React, { useEffect, useState } from 'react';
 
 import Transaction from '../Transaction';
@@ -21,8 +21,12 @@ const Transactions = () => {
         <th>Tipo</th>
       </thead>
       <tbody>
-        {transactions.map((transactions, index) => (
-          <Transaction key={index} transaction={transactions} />
+        {transactions.map((transaction, index) => (
+          <Transaction
+            key={index}
+            transaction={transaction}
+            className={transaction.type}
+          />
         ))}
       </tbody>
     </table>
