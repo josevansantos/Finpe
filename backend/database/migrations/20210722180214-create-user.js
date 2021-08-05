@@ -21,19 +21,19 @@ module.exports = {
         allowNull: false,
       },
       isAdmin: {
-        default: true,
+        default: 1,
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       createdAt: {
-        default: Date.now(),
         allowNull: false,
-        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        type: 'TIMESTAMP',
       },
       updatedAt: {
-        default: Date.now(),
         allowNull: false,
-        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        type: 'TIMESTAMP',
       },
     });
   },

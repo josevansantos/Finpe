@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const transaction = require('../controllers/transactions');
+const transaction = require('../controllers/Transactions');
 
 router.get('/', transaction.index);
 router.get('/:id', transaction.show);

@@ -4,19 +4,19 @@ class TransactionController {
   //Lista todas as transações
   async index(req, res) {
     try {
-      const transactions = await TransactionModel.findAll({
-        order: [['date', 'desc']],
-      });
+      const transactions = await TransactionModel.findAll();
       return res.status(200).json(transactions);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
   }
 
-  //Lista uma transação pelo id
   async show(req, res) {
     try {
-      const transaction = await TransactionModel.findAll({
+      const transaction = await TransactionModel.findOne({
+        where: {
+          id: req.params.id,
+        },
         include: {
           model: UserModel,
           as: 'user',
