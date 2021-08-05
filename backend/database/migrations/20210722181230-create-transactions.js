@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       date: {
+        default: Date.now(),
         type: Sequelize.DATE,
         allowNull: false,
       },
@@ -33,10 +34,12 @@ module.exports = {
         onDelete: 'CASCADE',
       },
       createdAt: {
+        default: Date.now(),
         allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
+        default: Date.now(),
         allowNull: false,
         type: Sequelize.DATE,
       },

@@ -21,14 +21,17 @@ module.exports = {
         allowNull: false,
       },
       isAdmin: {
+        default: true,
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       createdAt: {
+        default: Date.now(),
         allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
+        default: Date.now(),
         allowNull: false,
         type: Sequelize.DATE,
       },
