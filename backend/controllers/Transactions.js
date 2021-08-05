@@ -1,7 +1,6 @@
 const { TransactionModel, UserModel } = require('../database/models');
 
 class TransactionController {
-  //Lista todas as transações
   async index(req, res) {
     try {
       const transactions = await TransactionModel.findAll();
@@ -11,7 +10,6 @@ class TransactionController {
     }
   }
 
-  //Lista todas uma transação
   async show(req, res) {
     try {
       const transaction = await TransactionModel.findOne({
@@ -29,17 +27,15 @@ class TransactionController {
     }
   }
 
-  //Guarda as transações
   async store(req, res) {
     try {
       const transaction = await TransactionModel.create(req.body);
-      return res.json(transaction);
+      return res.status(200).json(transaction);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
   }
 
-  //Atualiza as transações
   async update(req, res) {
     try {
       const transaction = await TransactionModel.update(req.body, {
@@ -47,13 +43,12 @@ class TransactionController {
           id: req.params.id,
         },
       });
-      return res.json({ transaction });
+      return res.status(200).json({ transaction });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
   }
 
-  //Deleta as transações
   async destroy(req, res) {
     try {
       const transaction = await TransactionModel.destroy({
@@ -61,7 +56,7 @@ class TransactionController {
           id: req.params.id,
         },
       });
-      return res.json({ transaction });
+      return res.status(200).json({ transaction });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
