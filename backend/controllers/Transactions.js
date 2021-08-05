@@ -11,6 +11,7 @@ class TransactionController {
     }
   }
 
+  //Lista todas uma transação
   async show(req, res) {
     try {
       const transaction = await TransactionModel.findOne({
@@ -28,6 +29,7 @@ class TransactionController {
     }
   }
 
+  //Guarda as transações
   async store(req, res) {
     try {
       const transaction = await TransactionModel.create(req.body);
@@ -37,20 +39,28 @@ class TransactionController {
     }
   }
 
+  //Atualiza as transações
   async update(req, res) {
     try {
-      const transaction = await TransactionModel.findByPk(req.params.id);
-      await TransactionModel.update(req.body);
+      const transaction = await TransactionModel.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
       return res.json({ transaction });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
   }
 
+  //Deleta as transações
   async destroy(req, res) {
     try {
-      const transaction = await TransactionModel.findByPk(req.params.id);
-      await TransactionModel.destroy();
+      const transaction = await TransactionModel.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
       return res.json({ transaction });
     } catch (err) {
       return res.status(400).json({ error: err.message });
