@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       date: {
-        default: Date.now(),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         type: Sequelize.DATE,
         allowNull: false,
       },
