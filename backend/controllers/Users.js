@@ -4,7 +4,7 @@ class UserController {
   async index(req, res) {
     try {
       const users = await UserModel.findAll();
-      return res.json(users);
+      return res.status(200).json(users);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -21,7 +21,7 @@ class UserController {
           as: 'transactions',
         },
       });
-      return res.json(user);
+      return res.status(200).json(user);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -30,7 +30,7 @@ class UserController {
   async store(req, res) {
     try {
       const user = await UserModel.create(req.body);
-      return res.json(user);
+      return res.status(200).json(user);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -38,9 +38,12 @@ class UserController {
 
   async update(req, res) {
     try {
-      const user = await UserModel.findByPk(req.params.id);
-      await UserModel.update(req.body);
-      return res.json({ user });
+      const user = await UserModel.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
+      return res.status(200).json({ user });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -48,9 +51,12 @@ class UserController {
 
   async destroy(req, res) {
     try {
-      const user = await UserModel.findByPk(req.params.id);
-      await UserModel.destroy();
-      return res.json();
+      const user = await UserModel.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+      return res.status(200).json({ user });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
