@@ -2,12 +2,14 @@
 1280 x 720 pixels
 960 x 540 pixels
 
+largura
 xs, extra-pequeno: 0px
 sm, pequeno: 640px
 md, médio: 960px
 lg, grande: 1280px
 xl, extra-grande: 1920px
 
+altura
 xs, extra-pequeno: 0px
 sm, pequeno: 360px
 md, médio: 540px

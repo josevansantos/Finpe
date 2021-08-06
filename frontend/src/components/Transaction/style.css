@@ -1,11 +1,19 @@
-.description {
-    color: #363f5f;
+.income {
+    color: #fff;
+    background-color: #12a454;
+    opacity: 0.7;
 }
 
-.incoming {
-    color: #12a454;
+.income:hover {
+    opacity: 1;
 }
 
-.expends {
-    color: #e92929;
+.expense {
+    color: #fff;
+    background-color: #e92929;
+    opacity: 0.7;
+}
+
+.expense:hover {
+    opacity: 1;
 }

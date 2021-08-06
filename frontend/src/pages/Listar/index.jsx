@@ -1,14 +1,13 @@
+import './style.css';
 import React from 'react';
-import Header from '../../components/Header';
 import Transactions from '../../components/Transactions';
 
-const Home = () => {
+const Listar = () => {
   return (
     <>
-      <Header />
       <Transactions />
     </>
   );
 };
 
-export default Home;
+export default Listar;

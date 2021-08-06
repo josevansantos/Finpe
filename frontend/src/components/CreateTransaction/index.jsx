@@ -1,69 +1,97 @@
 import './style.css';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
+import api from '../../config';
 
 const CreateTransaction = ({ fechaModal }) => {
-  const [salvaDados, setSalvaDados] = useState(null);
+  const [formValues, setFormValue] = useState({});
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/transactions`, {
-      method: 'POST', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: {
-        id: 6,
-        date: '2021-06-01T00:00:00.000Z',
-        description: 'Leandro',
-        value: 7777,
-        type: 'expends',
-        userId: 1,
-        createdAt: '2021-07-28T00:00:00.000Z',
-        updatedAt: '2021-07-29T01:37:47.000Z',
-      }, // body data type must match "Content-Type" header
-    })
-      .then((response) => response.json())
-      .then((data) => setSalvaDados(data));
-  }, []);
+  const handleInputChange = (event) => {
+    const { target } = event;
+    const { name, value } = target;
+    setFormValue({ ...formValues, [name]: value });
+  };
+
+  const addTransaction = async (event) => {
+    event.preventDefault();
+
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    await api.post('/transactions', formValues, headers).then((response) => {
+      console.log('Sucesso', response);
+    });
+  };
 
   return (
     <div className="modal-transaction active">
       <div className="modal">
         <div className="form">
           <h2>Nova Transação</h2>
-          <form action="">
-            <div className="input-group">
-              <label>Data</label>
-              <input type="date" id="date" name="date" />
+          <form onSubmit={addTransaction}>
+            <input
+              type="text"
+              name="userId"
+              id="user"
+              onChange={handleInputChange}
+              value={formValues.userId || ''}
+            />
+            <input
+              type="date"
+              name="date"
+              id="date"
+              onChange={handleInputChange}
+              value={formValues.date || ''}
+            />
+            <input
+              type="text"
+              id="description"
+              name="description"
+              placeholder="Descrição"
+              onChange={handleInputChange}
+              value={formValues.description || ''}
+            />
+            <input
+              type="number"
+              step="0.01"
+              id="value"
+              name="amount"
+              placeholder="0,00"
+              onChange={handleInputChange}
+              value={formValues.amount || ''}
+            />
+            <div className="form-radio">
+              <label>
+                <input
+                  type="radio"
+                  name="type"
+                  value="expense"
+                  onChange={handleInputChange}
+                />
+              </label>
+              Despesa
+              <label>
+                <input
+                  type="radio"
+                  name="type"
+                  value="income"
+                  onChange={handleInputChange}
+                />
+              </label>
+              Receita
             </div>
-
-            <div className="input-group">
-              <label>Descrição</label>
-              <input
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Descrição"
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Valor</label>
-              <input
-                type="number"
-                step="0.01"
-                id="amount"
-                name="amount"
-                placeholder="0,00"
-              />
-              <small className="help">
-                Use o sinal - (negativo) para despesas e , (vírgula) para casas
-                decimais
-              </small>
-            </div>
-
             <div className="input-group actions">
               <button onClick={fechaModal} className="button cancel">
                 Cancelar
               </button>
-              <button onSubmit={salvaDados} className="button-green">
+              <button
+                type="submit"
+                // onClick={() => postData()}
+                className="button-green"
+              >
                 Salvar
               </button>
             </div>

@@ -1,12 +1,12 @@
 import './style.css';
 import React from 'react';
 
-const Dashboard = () => {
+const Cadastrar = () => {
   return (
     <>
-      <h1> Dashboard</h1>
+      <h1> Cadastrar</h1>
     </>
   );
 };
 
-export default Dashboard;
+export default Cadastrar;

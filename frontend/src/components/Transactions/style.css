@@ -1,31 +1,49 @@
-  table thead tr th:first-child,
-  table tbody tr td:first-child {
-      border-radius: 0.25rem 0 0 0.25rem;
+  .balance {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100%;
   }
 
-  table thead tr th:last-child,
-  table tbody tr td:last-child {
-      border-radius: 0 0.25rem 0.25rem 0;
+  .card {
+      border: .1rem solid black;
+      background: #FFFFFF;
+      padding: 2em;
+      border-radius: 0.25rem;
+      margin: 2em;
+      color: #000;
+      box-shadow: -10px 10px 10px 1px rgba(0, 0, 0, 0.25);
+      width: 400px;
+
   }
 
-  table thead th {
-      background: white;
-
+  .card h3 {
       font-weight: normal;
-      padding: 1rem 2rem;
-
-      text-align: left;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #545355;
   }
 
-  table tbody tr {
-      opacity: 0.7
+  .card p {
+      font-size: 2rem;
+      line-height: 3rem;
+      white-space: nowrap;
+      margin-top: 1rem;
+      color: #0D114F;
   }
 
-  table tbody tr:hover {
-      opacity: 1
+  .card .entrada p {
+      color: #4CBC5C;
   }
 
-  table tbody td {
-      background: white;
-      padding: 1rem 2rem;
+  .saida p {
+      color: #F0534A;
+  }
+
+  .total p {
+      color: #3283C3;
   }

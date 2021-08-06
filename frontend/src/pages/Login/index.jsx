@@ -6,7 +6,7 @@ const UserLogin = () => {
   return (
     <div className="user-login__container">
       <div className="user-login">
-      <h1 className="user-login__title">Login</h1>
+        <h1 className="user-login__title">Login</h1>
         <form autoComplete="nope">
           <div className="user-login__form-control">
             <label htmlFor="email">E-mail</label>
@@ -17,7 +17,7 @@ const UserLogin = () => {
             <input id="password" type="password" name="password" />
           </div>
           <button type="submit" className="user-login__button" rounded>
-            <a href="/app">Entrar</a>
+            <a href="/dashboard">Entrar</a>
           </button>
           <a className="user-login__link" href="/create">
             Fazer cadastro
