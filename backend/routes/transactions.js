@@ -5,7 +5,7 @@ const transaction = require('../controllers/Transactions');
 router.get('/', transaction.index);
 router.get('/:id', transaction.show);
 router.post('/', transaction.store);
-router.post('/:id', transaction.update);
+router.put('/:id', transaction.update);
 router.delete('/:id', transaction.destroy);
 
 module.exports = router;

@@ -3,7 +3,9 @@ const { TransactionModel, UserModel } = require('../database/models');
 class TransactionController {
   async index(req, res) {
     try {
-      const transactions = await TransactionModel.findAll();
+      const transactions = await TransactionModel.findAll({
+        order: [['date', 'DESC']],
+      });
       return res.status(200).json(transactions);
     } catch (err) {
       return res.status(400).json({ error: err.message });

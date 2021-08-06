@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       date: DataTypes.DATE,
       description: DataTypes.STRING,
-      value: DataTypes.FLOAT,
+      amount: DataTypes.FLOAT,
       type: DataTypes.STRING,
       userId: DataTypes.INTEGER,
     },

@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       date: {
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: new Date(),
         type: Sequelize.DATE,
         allowNull: false,
       },
@@ -17,8 +17,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      value: {
-        type: Sequelize.FLOAT,
+      amount: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       type: {
