@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../controllers/Users');
-const { eAdmin } = require('./login');
+const { validaToken } = require('../middleware/login');
 
-router.get('/', eAdmin, user.index);
-router.get('/:id', eAdmin, user.show);
-router.post('/', eAdmin, user.store);
-router.put('/:id', eAdmin, user.update);
-router.delete('/:id', eAdmin, user.destroy);
+router.get('/', validaToken, user.index);
+router.get('/:id', validaToken, user.show);
+router.post('/', validaToken, user.store);
+router.put('/:id', validaToken, user.update);
+router.delete('/:id', validaToken, user.destroy);
 
 module.exports = router;

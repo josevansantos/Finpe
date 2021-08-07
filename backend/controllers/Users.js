@@ -5,7 +5,7 @@ class UserController {
   async index(req, res) {
     try {
       const users = await UserModel.findAll({
-        attributes: ['id', 'name', 'email', 'password'],
+        attributes: ['id', 'name', 'email', 'isAdmin'],
       });
       return res.status(200).json(users);
     } catch (err) {
@@ -16,7 +16,7 @@ class UserController {
   async show(req, res) {
     try {
       const user = await UserModel.findOne({
-        attributes: ['id', 'name', 'email'],
+        attributes: ['id', 'name', 'email', 'isAdmin'],
         where: {
           id: req.params.id,
         },
@@ -44,7 +44,9 @@ class UserController {
 
   async update(req, res) {
     const dados = req.body;
-    dados.password = await bcrypt.hash(dados.password, 8);
+    dados.password != null
+      ? (dados.password = await bcrypt.hash(dados.password, 8))
+      : dados;
     try {
       const user = await UserModel.update(dados, {
         where: {

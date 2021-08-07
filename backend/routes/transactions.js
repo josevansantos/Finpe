@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const transaction = require('../controllers/Transactions');
-const { eAdmin } = require('./login');
+const { validaToken } = require('../middleware/login');
 
-router.get('/', eAdmin, transaction.index);
-router.get('/:id', eAdmin, transaction.show);
-router.post('/', eAdmin, transaction.store);
-router.put('/:id', eAdmin, transaction.update);
-router.delete('/:id', eAdmin, transaction.destroy);
+router.get('/', validaToken, transaction.index);
+router.get('/:id', validaToken, transaction.show);
+router.post('/', validaToken, transaction.store);
+router.put('/:id', validaToken, transaction.update);
+router.delete('/:id', validaToken, transaction.destroy);
 
 module.exports = router;

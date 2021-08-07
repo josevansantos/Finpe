@@ -1,12 +1,13 @@
 const { UserModel } = require('../database/models');
-const { create } = require('../helpers/jwt');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 class AuthController {
   static async login(req, res) {
     try {
       const user = await UserModel.findOne({
-        attributes: ['id', 'email', 'password', 'name'],
+        attributes: ['id', 'email', 'password', 'name', 'isAdmin'],
         where: { email: req.body.email },
       });
 
@@ -20,13 +21,14 @@ class AuthController {
         });
       }
 
-      const token = create(
+      const token = jwt.sign(
         {
           id: user.id,
           name: user.name,
           email: user.email,
           isAdmin: user.isAdmin,
         },
+        process.env.SECRET,
         { expiresIn: '1d' }
       );
 
@@ -36,23 +38,23 @@ class AuthController {
     }
   }
 
-  static async validaToken(req, res) {
-    await UserModel.findByPk(req.userId, {
-      attributes: ['id', 'name', 'email'],
-    })
-      .then((user) => {
-        return res.json({
-          erro: false,
-          user,
-        });
-      })
-      .catch(() => {
-        return res.status(400).json({
-          erro: true,
-          mensagem: 'Erro: Necessário realizar o login para acessar a página!',
-        });
-      });
-  }
+  // static async validaToken(req, res, next) {
+  //   await UserModel.findByPk(req.userId, {
+  //     attributes: ['id', 'name', 'email'],
+  //   })
+  //     .then((user) => {
+  //       return res.json({
+  //         erro: false,
+  //         user,
+  //       });
+  //     })
+  //     .catch(() => {
+  //       return res.status(400).json({
+  //         erro: true,
+  //         mensagem: 'Erro: Necessário realizar o login para acessar a página!',
+  //       });
+  //     });
+  // }
 
   static async register(req, res) {
     try {

@@ -1,34 +1,10 @@
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
-const { verify } = require('../helpers/jwt');
+const express = require('express');
+const router = express.Router();
+const controller = require('../controllers/Login');
+const validaToken = require('../middleware/login');
 
-module.exports = {
-  eAdmin: async function (req, res, next) {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) {
-      return res.status(400).json({
-        erro: true,
-        mensagem: 'Erro: Necessário realizar o login para acessar a página!',
-      });
-    }
-    const [, token] = authHeader.split(' ');
+// router.get('/valida', controller.validaToken);
+router.post('/', controller.login);
+router.post('/register', controller.register);
 
-    if (!token) {
-      return res.status(400).json({
-        erro: true,
-        mensagem: 'Erro: Necessário realizar o login para acessar a página!',
-      });
-    }
-
-    try {
-      const decoded = await promisify(jwt.verify)(token, verify);
-      req.user.id = decoded.id;
-      return next();
-    } catch (err) {
-      return res.status(400).json({
-        erro: true,
-        mensagem: 'Erro: Necessário realizar o login para acessar a página!',
-      });
-    }
-  },
-};
+module.exports = router;
