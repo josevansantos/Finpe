@@ -1,9 +1,12 @@
 const { UserModel, TransactionModel } = require('../database/models');
+const bcrypt = require('bcryptjs');
 
 class UserController {
   async index(req, res) {
     try {
-      const users = await UserModel.findAll();
+      const users = await UserModel.findAll({
+        attributes: ['id', 'name', 'email', 'password'],
+      });
       return res.status(200).json(users);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -13,6 +16,7 @@ class UserController {
   async show(req, res) {
     try {
       const user = await UserModel.findOne({
+        attributes: ['id', 'name', 'email'],
         where: {
           id: req.params.id,
         },
@@ -28,8 +32,10 @@ class UserController {
   }
 
   async store(req, res) {
+    const dados = req.body;
+    dados.password = await bcrypt.hash(dados.password, 8);
     try {
-      const user = await UserModel.create(req.body);
+      const user = await UserModel.create(dados);
       return res.status(200).json(user);
     } catch (err) {
       return res.status(400).json({ error: err.message });
@@ -37,8 +43,10 @@ class UserController {
   }
 
   async update(req, res) {
+    const dados = req.body;
+    dados.password = await bcrypt.hash(dados.password, 8);
     try {
-      const user = await UserModel.update(req.body, {
+      const user = await UserModel.update(dados, {
         where: {
           id: req.params.id,
         },

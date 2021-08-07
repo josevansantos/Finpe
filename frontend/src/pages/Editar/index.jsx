@@ -2,17 +2,24 @@ import './style.css';
 import React, { useEffect, useState } from 'react';
 import api from '../../config';
 
-const Editar = (props) => {
+const EditTransaction = (props) => {
   const [id] = useState(props.match.params.id);
-  const [data, setData] = useState('');
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
+  const [formValues, setFormValue] = useState({});
 
   const handleInputChange = (event) => {
     const { target } = event;
     const { name, value } = target;
-    setData({ ...data, [name]: value });
+    setFormValue({ ...formValues, [name]: value });
   };
+
+  useEffect(() => {
+    const getTransaction = async () => {
+      await api.get(`transactions/${id}`).then((response) => {
+        setFormValue(response.data);
+      });
+    };
+    getTransaction();
+  }, [id]);
 
   const editTransaction = async (event) => {
     event.preventDefault();
@@ -21,56 +28,73 @@ const Editar = (props) => {
         'Content-Type': 'application/json',
       },
     };
-
     await api
-      .put(`transactions/${id}`, { description, amount }, headers)
+      .put(`transactions/${id}`, formValues, headers)
       .then((response) => {
         console.log('response:', response);
       });
   };
 
-  useEffect(() => {
-    const getTransaction = async () => {
-      api.get(`transactions/${id}`).then((response) => setData(response.data));
-    };
-    getTransaction();
-  }, [id]);
-
   return (
     <>
       <h1> Editar</h1>
       <form onSubmit={editTransaction}>
-        <label>Data</label>
         <input
-          type="date"
-          name="date"
-          id="date"
-          value={data.date}
+          type="text"
+          name="userId"
+          id="user"
           onChange={handleInputChange}
+          value={formValues.userId || ''}
         />
-        <label>Descrição</label>
+        <input type="date" name="date" id="date" onChange={handleInputChange} />
         <input
           type="text"
           id="description"
           name="description"
           placeholder="Descrição"
-          value={data.description}
           onChange={handleInputChange}
+          value={formValues.description || ''}
         />
-        <label>Valor</label>
         <input
           type="number"
           step="0.01"
           id="value"
           name="amount"
           placeholder="0,00"
-          value={data.amount}
           onChange={handleInputChange}
+          value={formValues.amount || ''}
         />
-        <button type="submit">Salvar</button>
+        <div className="form-radio">
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="expense"
+              onChange={handleInputChange}
+            />
+          </label>
+          Despesa
+          <label>
+            <input
+              type="radio"
+              name="type"
+              value="income"
+              onChange={handleInputChange}
+            />
+          </label>
+          Receita
+        </div>
+        <div className="input-group actions">
+          <button type="button" className="button cancel">
+            Cancelar
+          </button>
+          <button type="submit" className="button-green">
+            Salvar
+          </button>
+        </div>
       </form>
     </>
   );
 };
 
-export default Editar;
+export default EditTransaction;

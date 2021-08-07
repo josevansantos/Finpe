@@ -1,7 +1,5 @@
 import './style.css';
-
 import React, { useState } from 'react';
-
 import api from '../../config';
 
 const CreateTransaction = ({ fechaModal }) => {
@@ -15,7 +13,6 @@ const CreateTransaction = ({ fechaModal }) => {
 
   const addTransaction = async (event) => {
     event.preventDefault();
-
     const headers = {
       headers: {
         'Content-Type': 'application/json',
@@ -87,11 +84,7 @@ const CreateTransaction = ({ fechaModal }) => {
               <button onClick={fechaModal} className="button cancel">
                 Cancelar
               </button>
-              <button
-                type="submit"
-                // onClick={() => postData()}
-                className="button-green"
-              >
+              <button type="submit" className="button-green">
                 Salvar
               </button>
             </div>

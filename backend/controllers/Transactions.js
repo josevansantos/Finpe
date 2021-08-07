@@ -6,7 +6,7 @@ class TransactionController {
       const transactions = await TransactionModel.findAll({
         order: [['date', 'DESC']],
       });
-      return res.status(200).json(transactions);
+      return res.status(200).json({ transactions, idUser: req.userId });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }

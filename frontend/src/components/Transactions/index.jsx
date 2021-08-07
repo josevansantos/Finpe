@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../config';
 
-import Transaction from '../Transaction';
-import { Table } from '../../styles';
-import { formatValue } from '../../helpers/formats';
+import { ButtonTable, Table } from '../../styles';
+import { formatDate, formatValue } from '../../helpers/formats';
+import { Link } from 'react-router-dom';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -20,6 +20,13 @@ const Transactions = () => {
   useEffect(() => {
     listTransactions();
   }, []);
+
+  const deleteTransaction = async (id) => {
+    await api.delete(`transactions/${id}`).then((response) => {
+      console.log(response);
+    });
+    listTransactions();
+  };
 
   const getExpense = ({ type }) => type === 'expense';
   const expense = transactions.filter(getExpense);
@@ -49,18 +56,33 @@ const Transactions = () => {
       </div>
       <Table>
         <thead>
-          <th>Data</th>
-          <th>Descrição</th>
-          <th>Valor</th>
-          <th>Opções</th>
+          <tr>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Opções</th>
+          </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction, index) => (
-            <Transaction
-              key={index}
-              transaction={transaction}
-              className={transaction.type}
-            />
+          {transactions.map((transaction) => (
+            <tr key={transaction.id} className={transaction.type}>
+              <td>{formatDate(transaction.date)}</td>
+              <td>{transaction.description}</td>
+              <td>{formatValue(transaction.amount)}</td>
+              <td>
+                <Link to={'/editar/' + transaction.id}>
+                  <ButtonTable type="button">Editar</ButtonTable>
+                </Link>
+                <Link to={'/apagar/' + transaction.id}>
+                  <ButtonTable
+                    type="button"
+                    onClick={() => deleteTransaction(transaction.id)}
+                  >
+                    Apagar
+                  </ButtonTable>
+                </Link>
+              </td>
+            </tr>
           ))}
         </tbody>
       </Table>
