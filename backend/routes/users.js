@@ -5,7 +5,7 @@ const { validaToken } = require('../middleware/login');
 
 router.get('/', validaToken, user.index);
 router.get('/:id', validaToken, user.show);
-router.post('/', validaToken, user.store);
+router.post('/', user.store);
 router.put('/:id', validaToken, user.update);
 router.delete('/:id', validaToken, user.destroy);
 

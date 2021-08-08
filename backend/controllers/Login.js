@@ -5,19 +5,21 @@ require('dotenv').config();
 
 class AuthController {
   static async login(req, res) {
+    console.log(req.body);
+    console.log(bcrypt.hashSync('123', 8));
     try {
       const user = await UserModel.findOne({
         attributes: ['id', 'email', 'password', 'name', 'isAdmin'],
         where: { email: req.body.email },
       });
 
-      if (user === null) {
+      if (!user) {
         return res.status(401).json({ error: 'Usuário ou a senha incorreta!' });
       }
 
-      if (!(await bcrypt.compare(req.body.password, user.password))) {
+      if (!bcrypt.compareSync(req.body.password, user.password)) {
         return res.status(401).json({
-          erro: 'Usuário ou a senha incorreta!',
+          erro: 'Usuário ou a senha incorreta! 1',
         });
       }
 
@@ -38,23 +40,23 @@ class AuthController {
     }
   }
 
-  // static async validaToken(req, res, next) {
-  //   await UserModel.findByPk(req.userId, {
-  //     attributes: ['id', 'name', 'email'],
-  //   })
-  //     .then((user) => {
-  //       return res.json({
-  //         erro: false,
-  //         user,
-  //       });
-  //     })
-  //     .catch(() => {
-  //       return res.status(400).json({
-  //         erro: true,
-  //         mensagem: 'Erro: Necessário realizar o login para acessar a página!',
-  //       });
-  //     });
-  // }
+  static validaToken(req, res) {
+    UserModel.findByPk(req.userId, {
+      attributes: ['id', 'name', 'email'],
+    })
+      .then((user) => {
+        return res.json({
+          erro: false,
+          user,
+        });
+      })
+      .catch(() => {
+        return res.status(400).json({
+          erro: true,
+          mensagem: 'Erro: Necessário realizar o login para acessar a página!',
+        });
+      });
+  }
 
   static async register(req, res) {
     try {

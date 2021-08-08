@@ -4,11 +4,14 @@ class TransactionController {
   async index(req, res) {
     try {
       const transactions = await TransactionModel.findAll({
+        where: {
+          userId: req.userId,
+        },
         order: [['date', 'DESC']],
       });
       return res
         .status(200)
-        .json({ transactions, id: req.userId, admin: req.isAdmin });
+        .json({ transactions, userId: req.userId, admin: req.isAdmin });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
