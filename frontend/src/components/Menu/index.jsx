@@ -1,11 +1,16 @@
 // import './style.css';
 import { ButtonMenu, MenuStyle } from './style';
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import { Context } from '../../context/AuthContext';
+
 import CreateTransaction from '../CreateTransaction';
 import { Container } from '../../styles';
 
 function Menu() {
+  const { handleLogout } = useContext(Context);
+
   const [show, setShow] = useState(false);
   const chamaModal = () => {
     if (show === true) {
@@ -29,7 +34,7 @@ function Menu() {
         <ButtonMenu as="a" href="/create">
           Cadastrar usuário
         </ButtonMenu>
-        <ButtonMenu as="a" href="/login">
+        <ButtonMenu as="a" href="/#" onClick={handleLogout}>
           Sair
         </ButtonMenu>
       </MenuStyle>

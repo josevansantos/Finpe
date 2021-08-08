@@ -14,7 +14,12 @@ const EditTransaction = (props) => {
 
   useEffect(() => {
     const getTransaction = async () => {
-      await api.get(`transactions/${id}`).then((response) => {
+      const headers = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+      await api.get(`transactions/${id}`, headers).then((response) => {
         setFormValue(response.data);
       });
     };
@@ -26,6 +31,7 @@ const EditTransaction = (props) => {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
     await api

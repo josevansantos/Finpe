@@ -1,30 +1,24 @@
 // import './style.css';
 import React, { useEffect, useState } from 'react';
-import api from '../../config';
 
 import { ButtonTable, Table } from '../../styles';
 import { formatDate, formatValue } from '../../helpers/formats';
 import { Link } from 'react-router-dom';
+import { getAll, remove } from '../../services/transactions';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
 
   const listTransactions = async () => {
-    await api
-      .get(`transactions`)
-      .then((response) => setTransactions(response.data))
+    getAll()
+      .then(setTransactions)
       .catch((err) => {
         console.error(err.response);
       });
   };
-  useEffect(() => {
-    listTransactions();
-  }, []);
 
   const deleteTransaction = async (id) => {
-    await api.delete(`transactions/${id}`).then((response) => {
-      console.log(response);
-    });
+    await remove(id);
     listTransactions();
   };
 
@@ -35,6 +29,10 @@ const Transactions = () => {
   const getIncome = ({ type }) => type === 'income';
   const income = transactions.filter(getIncome);
   const newIncome = income.reduce((acc, { amount }) => acc + amount, 0);
+
+  useEffect(() => {
+    listTransactions();
+  }, []);
 
   return (
     <>
@@ -73,14 +71,14 @@ const Transactions = () => {
                 <Link to={'/editar/' + transaction.id}>
                   <ButtonTable type="button">Editar</ButtonTable>
                 </Link>
-                <Link to={'/apagar/' + transaction.id}>
-                  <ButtonTable
-                    type="button"
-                    onClick={() => deleteTransaction(transaction.id)}
-                  >
-                    Apagar
-                  </ButtonTable>
-                </Link>
+                {/* <Link to={'/apagar/' + transaction.id}> */}
+                <ButtonTable
+                  type="button"
+                  onClick={() => deleteTransaction(transaction.id)}
+                >
+                  Apagar
+                </ButtonTable>
+                {/* </Link> */}
               </td>
             </tr>
           ))}

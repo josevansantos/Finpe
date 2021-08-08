@@ -1,4 +1,4 @@
-import './style.css';
+// import './style.css';
 import React, { useState } from 'react';
 import api from '../../config';
 
@@ -16,6 +16,7 @@ const CreateTransaction = ({ fechaModal }) => {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
     await api.post('/transactions', formValues, headers).then((response) => {
@@ -24,9 +25,9 @@ const CreateTransaction = ({ fechaModal }) => {
   };
 
   return (
-    <div className="modal-transaction active">
-      <div className="modal">
-        <div className="form">
+    <div>
+      <div>
+        <div>
           <h2>Nova Transação</h2>
           <form onSubmit={addTransaction}>
             <input
@@ -84,9 +85,7 @@ const CreateTransaction = ({ fechaModal }) => {
               <button onClick={fechaModal} className="button cancel">
                 Cancelar
               </button>
-              <button type="submit" className="button-green">
-                Salvar
-              </button>
+              <button type="submit">Salvar</button>
             </div>
           </form>
         </div>
