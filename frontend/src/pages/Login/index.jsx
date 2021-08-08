@@ -1,5 +1,3 @@
-// import './style.css';
-
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import api from '../../config';
@@ -38,46 +36,67 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="user-login__container">
-      <div className="user-login">
-        <h1 className="user-login__title">Login</h1>
-
-        {status.type === 'success' ? (
-          <Redirect
-            to={{
-              pathname: '/dashboard',
-            }}
-          />
-        ) : (
-          '/login'
-        )}
-
-        <form onSubmit={loginSubmit}>
-          <label htmlFor="email">E-mail</label>
-          <input
-            id="email"
-            type="text"
-            name="email"
-            placeholder="Digite seu e-mail"
-            autoComplete="off"
-            onChange={valueInput}
-          />
-          <br />
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            autoComplete="on"
-            onChange={valueInput}
-          />
-          <button type="submit" className="user-login__button" rounded>
-            <a href="/dashboard">Entrar</a>
-          </button>
-          <a className="user-login__link" href="/create">
-            Fazer cadastro
-          </a>
-        </form>
+    <div className="container-fluid">
+      <div className="row justify-content-md-center">
+        <div className="col-sm-20 col-md-7 col-lg-5 mx-auto">
+          <div>
+            <div className="login d-flex align-items-center py-5">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-10 col-xl-7 mx-auto">
+                    <form onSubmit={loginSubmit}>
+                      <div className="form-group mb-3">
+                        <label htmlFor="email">E-mail</label>
+                        <input
+                          className="form-control border-0 shadow-sm px-4"
+                          id="email"
+                          type="text"
+                          name="email"
+                          placeholder="Digite seu e-mail"
+                          autoComplete="off"
+                          onChange={valueInput}
+                        />
+                      </div>
+                      <div className="form-group mb-3">
+                        <label htmlFor="password">Senha</label>
+                        <input
+                          className="form-control border-0 shadow-sm px-4"
+                          id="password"
+                          type="password"
+                          name="password"
+                          autoComplete="on"
+                          onChange={valueInput}
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        className="btn btn-success btn-lg btn-block rounded"
+                        href="/dashboard"
+                      >
+                        Login
+                      </button>
+                      <a
+                        href="/create"
+                        className="btn btn-primary btn-lg btn-block rounded "
+                      >
+                        Fazer cadastro
+                      </a>
+                      {status.type === 'success' ? (
+                        <Redirect
+                          to={{
+                            pathname: '/dashboard',
+                          }}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
