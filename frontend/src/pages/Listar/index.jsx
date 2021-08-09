@@ -1,6 +1,5 @@
-import './style.css';
 import React from 'react';
-import Transactions from '../../components/Transactions';
+import { Transactions } from '../../components/Transactions';
 
 const Listar = () => {
   return (

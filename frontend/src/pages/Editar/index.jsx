@@ -1,4 +1,3 @@
-import './style.css';
 import React, { useEffect, useState } from 'react';
 import api from '../../config';
 
@@ -43,62 +42,69 @@ const EditTransaction = (props) => {
 
   return (
     <>
-      <h1> Editar</h1>
-      <form onSubmit={editTransaction}>
-        <input
-          type="text"
-          name="userId"
-          id="user"
-          onChange={handleInputChange}
-          value={formValues.userId || ''}
-        />
-        <input type="date" name="date" id="date" onChange={handleInputChange} />
-        <input
-          type="text"
-          id="description"
-          name="description"
-          placeholder="Descrição"
-          onChange={handleInputChange}
-          value={formValues.description || ''}
-        />
-        <input
-          type="number"
-          step="0.01"
-          id="value"
-          name="amount"
-          placeholder="0,00"
-          onChange={handleInputChange}
-          value={formValues.amount || ''}
-        />
-        <div className="form-radio">
-          <label>
-            <input
-              type="radio"
-              name="type"
-              value="expense"
-              onChange={handleInputChange}
-            />
-          </label>
-          Despesa
-          <label>
-            <input
-              type="radio"
-              name="type"
-              value="income"
-              onChange={handleInputChange}
-            />
-          </label>
-          Receita
-        </div>
-        <div className="input-group actions">
-          <button type="button" className="button cancel">
-            Cancelar
-          </button>
-          <button type="submit" className="button-green">
-            Salvar
-          </button>
-        </div>
-      </form>
+      <div className="mb-5">
+        <h1> Editar</h1>
+        <form onSubmit={editTransaction}>
+          <input
+            type="hidden"
+            name="userId"
+            id="user"
+            onChange={handleInputChange}
+            value={formValues.userId || ''}
+          />
+          <input
+            type="date"
+            name="date"
+            id="date"
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Descrição"
+            onChange={handleInputChange}
+            value={formValues.description || ''}
+          />
+          <input
+            type="number"
+            step="0.01"
+            id="value"
+            name="amount"
+            placeholder="0,00"
+            onChange={handleInputChange}
+            value={formValues.amount || ''}
+          />
+          <div className="form-radio">
+            <label>
+              <input
+                type="radio"
+                name="type"
+                value="expense"
+                onChange={handleInputChange}
+              />
+            </label>
+            Despesa
+            <label>
+              <input
+                type="radio"
+                name="type"
+                value="income"
+                onChange={handleInputChange}
+              />
+            </label>
+            Receita
+          </div>
+          <div className="input-group actions">
+            <button type="button" className="button cancel">
+              Cancelar
+            </button>
+            <button type="submit" className="button-green">
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

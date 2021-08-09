@@ -7,7 +7,6 @@ import UserLogin from '../pages/Login';
 import CreateUser from '../components/Cadastro';
 import CreateTransaction from '../components/CreateTransaction';
 import Home from '../pages/Home';
-import Cadastrar from '../pages/Cadastrar';
 import Editar from '../pages/Editar';
 
 function CustomRoute({ isPrivate, ...rest }) {
@@ -25,21 +24,10 @@ export default function RoutesAdm() {
     <Switch>
       <CustomRoute exact path="/" component={UserLogin} />
       <CustomRoute exact path="/create" component={CreateUser} />
-      <CustomRoute exact isPrivate path="/dashboard" component={Home} />{' '}
-      <CustomRoute
-        exact
-        isPrivate
-        path="/transaction"
-        component={CreateTransaction}
-      />
-      <CustomRoute
-        exact
-        isPrivate
-        path="/cadastrar/:id"
-        component={Cadastrar}
-      />
-      <CustomRoute exact isPrivate path="/editar/:id" component={Editar} />
-      <CustomRoute exact isPrivate path="/apagar/:id">
+      <CustomRoute exact path="/dashboard" component={Home} />{' '}
+      <CustomRoute exact path="/transaction" component={CreateTransaction} />
+      <CustomRoute exact path="/editar/:id" component={Editar} />
+      <CustomRoute exact path="/apagar/:id">
         <Redirect to="/dashboard" />
       </CustomRoute>
     </Switch>

@@ -5,8 +5,6 @@ require('dotenv').config();
 
 class AuthController {
   static async login(req, res) {
-    console.log(req.body);
-    console.log(bcrypt.hashSync('123', 8));
     try {
       const user = await UserModel.findOne({
         attributes: ['id', 'email', 'password', 'name', 'isAdmin'],
@@ -19,7 +17,7 @@ class AuthController {
 
       if (!bcrypt.compareSync(req.body.password, user.password)) {
         return res.status(401).json({
-          erro: 'Usuário ou a senha incorreta! 1',
+          erro: 'Usuário ou a senha incorreta!',
         });
       }
 

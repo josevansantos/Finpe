@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import { Router } from 'react-router-dom';
 
@@ -9,7 +8,7 @@ import history from './services/history';
 import { AuthProvider } from './context/AuthContext';
 
 const App = () => (
-  <div className="App">
+  <div>
     <AuthProvider>
       <React.Fragment>
         <Router history={history}>

@@ -1,12 +1,8 @@
-// import './style.css';
-import { ButtonMenu, MenuStyle } from './style';
-
 import React, { useState, useContext } from 'react';
 
 import { Context } from '../../context/AuthContext';
 
 import CreateTransaction from '../CreateTransaction';
-import { Container } from '../../styles';
 
 function Menu() {
   const { handleLogout } = useContext(Context);
@@ -20,25 +16,37 @@ function Menu() {
     }
   };
   return (
-    <Container>
-      <MenuStyle>
-        <ButtonMenu
-          as="a"
-          href="#"
-          className="button-menu"
-          onClick={chamaModal}
-        >
-          + Nova Transação{' '}
-        </ButtonMenu>
-        {show ? <CreateTransaction fechaModal={chamaModal} /> : <></>}
-        <ButtonMenu as="a" href="/create">
-          Cadastrar usuário
-        </ButtonMenu>
-        <ButtonMenu as="a" href="/#" onClick={handleLogout}>
-          Sair
-        </ButtonMenu>
-      </MenuStyle>
-    </Container>
+    <>
+      <div className="mb-5">
+        <nav className="navbar bg-success justify-content-center p-3">
+          <div className="container justify-content-center">
+            <ul className="nav justify-content-center">
+              <li className="nav-item">
+                <button
+                  as="a"
+                  href="#"
+                  className="btn btn-success mr-5"
+                  onClick={chamaModal}
+                >
+                  + Nova Transação{' '}
+                </button>
+                {show ? <CreateTransaction fechaModal={chamaModal} /> : <></>}
+              </li>
+              <li className="nav-item">
+                <button
+                  className="btn btn-success ml-5"
+                  as="a"
+                  href="/"
+                  onClick={handleLogout}
+                >
+                  Sair
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }
 

@@ -1,7 +1,5 @@
-// import './style.css';
 import React, { useEffect, useState } from 'react';
 
-import { ButtonTable, Table } from '../../styles';
 import { formatDate, formatValue } from '../../helpers/formats';
 import { Link } from 'react-router-dom';
 import { getAll, remove } from '../../services/transactions';
@@ -36,56 +34,82 @@ const Transactions = () => {
 
   return (
     <>
-      <div className="balance">
-        <div className="card entrada">
-          <h3>Entradas</h3>
-          <p id="incomeDisplay">{formatValue(newIncome)}</p>
-        </div>
+      <div className="">
+        <div className=" d-flex flex-row justify-content-between">
+          <div className="card-body bg-success mt-1 mb-5 ml-4 mr-2 rounded">
+            <h2 className="text-white text-uppercase align-content-center">
+              Entradas
+            </h2>
+            <h4
+              className="text-white text-uppercase align-content-center"
+              id="incomeDisplay"
+            >
+              {formatValue(newIncome)}
+            </h4>
+          </div>
+          <div className="card-body bg-danger mt-1 mb-5 ml-2 mr-2 rounded">
+            <h2 className="text-white text-uppercase">Saídas</h2>
+            <h4 className="text-white text-uppercase" id="expenseDisplay">
+              {formatValue(newExpense)}
+            </h4>
+          </div>
 
-        <div className="card saida">
-          <h3>Saídas</h3>
-          <p id="expenseDisplay">{formatValue(newExpense)}</p>
-        </div>
-
-        <div className="card total">
-          <h3>Total</h3>
-          <p id="totalDisplay">{formatValue(newIncome - newExpense)}</p>
+          <div className="card-body bg-info mt-1 mb-5 ml-2 mr-4 rounded">
+            <h2 className="text-white text-uppercase ">Total</h2>
+            <h4 className="text-white text-uppercase" id="totalDisplay">
+              {formatValue(newIncome - newExpense)}
+            </h4>
+          </div>
         </div>
       </div>
-      <Table>
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Descrição</th>
-            <th>Valor</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id} className={transaction.type}>
-              <td>{formatDate(transaction.date)}</td>
-              <td>{transaction.description}</td>
-              <td>{formatValue(transaction.amount)}</td>
-              <td>
-                <Link to={'/editar/' + transaction.id}>
-                  <ButtonTable type="button">Editar</ButtonTable>
-                </Link>
-                {/* <Link to={'/apagar/' + transaction.id}> */}
-                <ButtonTable
-                  type="button"
-                  onClick={() => deleteTransaction(transaction.id)}
-                >
-                  Apagar
-                </ButtonTable>
-                {/* </Link> */}
-              </td>
+
+      <div className="justify-content-between d-xl-flex m-4 align-content-center">
+        <table className="table table-hover align-content-center">
+          <thead className="bg-secondary text-white align-content-center">
+            <tr className="align-content-center">
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th />
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {transactions.map((transaction) => (
+              <tr
+                key={transaction.id}
+                className={
+                  transaction.type === 'income'
+                    ? 'table-success text-black justify-content-center'
+                    : 'table-danger text-black justify-content-center'
+                }
+              >
+                <td className="pt-3 mb-0">{formatDate(transaction.date)}</td>
+                <td className="pt-3 mb-0">{transaction.description}</td>
+                <td className="pt-3 mb-0">{formatValue(transaction.amount)}</td>
+                <td>
+                  <Link to={'/editar/' + transaction.id}>
+                    <button
+                      className="btn btn-secondary justify-content-center"
+                      type="button"
+                    >
+                      Editar
+                    </button>
+                  </Link>{' '}
+                  <button
+                    type="button"
+                    className="btn btn-danger btn-secondary justify-content-center ml-5"
+                    onClick={() => deleteTransaction(transaction.id)}
+                  >
+                    Apagar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
 
-export default Transactions;
+export { Transactions };

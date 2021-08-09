@@ -1,5 +1,5 @@
-// import './style.css';
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import api from '../../config';
 
 const CreateTransaction = ({ fechaModal }) => {
@@ -25,12 +25,12 @@ const CreateTransaction = ({ fechaModal }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <h2>Nova Transação</h2>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="">
           <form onSubmit={addTransaction}>
             <input
+              className="form-control m-1"
               type="text"
               name="userId"
               id="user"
@@ -38,32 +38,32 @@ const CreateTransaction = ({ fechaModal }) => {
               value={formValues.userId || ''}
             />
             <input
+              className="form-control m-1"
               type="date"
               name="date"
-              id="date"
               onChange={handleInputChange}
               value={formValues.date || ''}
             />
             <input
+              className="form-control m-1"
               type="text"
-              id="description"
               name="description"
               placeholder="Descrição"
               onChange={handleInputChange}
               value={formValues.description || ''}
             />
             <input
-              type="number"
-              step="0.01"
-              id="value"
+              className="form-control m-1"
+              type="text"
               name="amount"
               placeholder="0,00"
               onChange={handleInputChange}
               value={formValues.amount || ''}
             />
-            <div className="form-radio">
+            <div className="form-radio align-items-center">
               <label>
                 <input
+                  className="m-1"
                   type="radio"
                   name="type"
                   value="expense"
@@ -73,6 +73,7 @@ const CreateTransaction = ({ fechaModal }) => {
               Despesa
               <label>
                 <input
+                  className="m-1"
                   type="radio"
                   name="type"
                   value="income"
@@ -82,10 +83,18 @@ const CreateTransaction = ({ fechaModal }) => {
               Receita
             </div>
             <div className="input-group actions">
-              <button onClick={fechaModal} className="button cancel">
+              <button
+                onClick={fechaModal}
+                className="btn btn-danger btn-lg btn-block rounded"
+              >
                 Cancelar
               </button>
-              <button type="submit">Salvar</button>
+              <button
+                className="btn btn-success btn-lg btn-block rounded"
+                type="submit"
+              >
+                Salvar
+              </button>
             </div>
           </form>
         </div>

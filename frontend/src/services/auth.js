@@ -1,3 +1,5 @@
 import api from '../common/api';
 
-const login = () => {};
+export const getUser = (id) => {
+  api.get(`users/${id}`).then((response) => response.data.transactions);
+};

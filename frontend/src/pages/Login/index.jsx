@@ -14,6 +14,7 @@ const UserLogin = () => {
 
   const [status, setStatus] = useState({
     type: '',
+    mensagem: '',
   });
 
   const valueInput = (event) =>
@@ -21,38 +22,45 @@ const UserLogin = () => {
 
   const loginSubmit = async (event) => {
     event.preventDefault();
-
     const headers = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
-
     await api.post('/login', user, headers).then((response) => {
       localStorage.setItem('token', response.data.token);
       singIn(true);
-      setStatus({ type: 'success' });
+      setStatus({ type: true });
     });
   };
 
   return (
     <div className="container-fluid">
-      <div className="row justify-content-md-center">
-        <div className="col-sm-20 col-md-7 col-lg-5 mx-auto">
+      <div className="justify-content-center">
+        <div className=" justify-content-center mx-auto">
           <div>
-            <div className="login d-flex align-items-center py-5">
+            <div>
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 col-xl-7 mx-auto">
+                    {status.type === true ? (
+                      <Redirect
+                        to={{
+                          pathname: '/dashboard',
+                        }}
+                      />
+                    ) : (
+                      ''
+                    )}
                     <form onSubmit={loginSubmit}>
-                      <div className="form-group mb-3">
+                      <h1 className="mb-5 mt-5">Login</h1>
+                      <div className="form-group mb-3 mt-5">
                         <label htmlFor="email">E-mail</label>
                         <input
                           className="form-control border-0 shadow-sm px-4"
                           id="email"
                           type="text"
                           name="email"
-                          placeholder="Digite seu e-mail"
                           autoComplete="off"
                           onChange={valueInput}
                         />
@@ -71,7 +79,6 @@ const UserLogin = () => {
                       <button
                         type="submit"
                         className="btn btn-success btn-lg btn-block rounded"
-                        href="/dashboard"
                       >
                         Login
                       </button>
@@ -81,15 +88,6 @@ const UserLogin = () => {
                       >
                         Fazer cadastro
                       </a>
-                      {status.type === 'success' ? (
-                        <Redirect
-                          to={{
-                            pathname: '/dashboard',
-                          }}
-                        />
-                      ) : (
-                        ''
-                      )}
                     </form>
                   </div>
                 </div>
