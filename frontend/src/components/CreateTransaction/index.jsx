@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Button } from 'react-bootstrap';
 import api from '../../config';
 
 const CreateTransaction = ({ fechaModal }) => {
@@ -19,9 +19,7 @@ const CreateTransaction = ({ fechaModal }) => {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     };
-    await api.post('/transactions', formValues, headers).then((response) => {
-      console.log('Sucesso', response);
-    });
+    await api.post('/transactions', formValues, headers).then((response) => {});
   };
 
   return (
@@ -83,18 +81,19 @@ const CreateTransaction = ({ fechaModal }) => {
               Receita
             </div>
             <div className="input-group actions">
-              <button
-                onClick={fechaModal}
+              <a
+                href="/dashboard"
                 className="btn btn-danger btn-lg btn-block rounded"
               >
                 Cancelar
-              </button>
-              <button
+              </a>
+              <Button
                 className="btn btn-success btn-lg btn-block rounded"
                 type="submit"
+                onClick={addTransaction}
               >
                 Salvar
-              </button>
+              </Button>
             </div>
           </form>
         </div>

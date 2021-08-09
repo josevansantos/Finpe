@@ -25,7 +25,14 @@ export default function RoutesAdm() {
       <CustomRoute exact path="/" component={UserLogin} />
       <CustomRoute exact path="/create" component={CreateUser} />
       <CustomRoute exact path="/dashboard" component={Home} />{' '}
-      <CustomRoute exact path="/transaction" component={CreateTransaction} />
+      <CustomRoute
+        exact
+        path="/transaction"
+        component={CreateTransaction}
+      ></CustomRoute>
+      <CustomRoute exact path="/transaction/create">
+        <Redirect to="/dashboard" />
+      </CustomRoute>
       <CustomRoute exact path="/editar/:id" component={Editar} />
       <CustomRoute exact path="/apagar/:id">
         <Redirect to="/dashboard" />

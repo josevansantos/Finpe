@@ -63,6 +63,10 @@ const Transactions = () => {
         </div>
       </div>
 
+      <a className="btn btn-success btn-lg rounded ml-5" href="/transaction">
+        Nova Transação
+      </a>
+
       <div className="justify-content-between d-xl-flex m-4 align-content-center">
         <table className="table table-hover align-content-center">
           <thead className="bg-secondary text-white align-content-center">
