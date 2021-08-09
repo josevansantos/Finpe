@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import api from '../../config';
 
 const CreateTransaction = ({ fechaModal }) => {
@@ -20,21 +19,23 @@ const CreateTransaction = ({ fechaModal }) => {
       },
     };
     await api.post('/transactions', formValues, headers).then((response) => {});
+    window.location = '/dashboard';
   };
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="">
+      <div className="row justify-content-md-center">
+        <div className="d-flex align-items-center py-5">
           <form onSubmit={addTransaction}>
-            <input
+            {/* <input
+              placeholder="ID do usuário"
               className="form-control m-1"
               type="text"
               name="userId"
               id="user"
               onChange={handleInputChange}
               value={formValues.userId || ''}
-            />
+            /> */}
             <input
               className="form-control m-1"
               type="date"
@@ -58,10 +59,10 @@ const CreateTransaction = ({ fechaModal }) => {
               onChange={handleInputChange}
               value={formValues.amount || ''}
             />
-            <div className="form-radio align-items-center">
-              <label>
+            <div className="custom-control custom-radio">
+              <label className="m-1 align-items-center">
                 <input
-                  className="m-1"
+                  className="m-1 align-items-center"
                   type="radio"
                   name="type"
                   value="expense"
@@ -69,9 +70,9 @@ const CreateTransaction = ({ fechaModal }) => {
                 />
               </label>
               Despesa
-              <label>
+              <label className="m-1 align-items-center">
                 <input
-                  className="m-1"
+                  className="m-1 align-items-center"
                   type="radio"
                   name="type"
                   value="income"
@@ -87,13 +88,18 @@ const CreateTransaction = ({ fechaModal }) => {
               >
                 Cancelar
               </a>
-              <Button
+              <button
                 className="btn btn-success btn-lg btn-block rounded"
                 type="submit"
-                onClick={addTransaction}
               >
                 Salvar
-              </Button>
+              </button>
+              <a
+                className="btn btn-info btn-lg btn-block rounded"
+                href="/transaction/create"
+              >
+                Voltar
+              </a>
             </div>
           </form>
         </div>

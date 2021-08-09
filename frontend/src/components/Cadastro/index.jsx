@@ -90,6 +90,12 @@ const CreateUser = () => {
                       ) : (
                         ''
                       )}
+                      <a
+                        className="btn btn-info btn-lg btn-block rounded"
+                        href="/"
+                      >
+                        Voltar
+                      </a>
                     </form>
                   </div>
                 </div>

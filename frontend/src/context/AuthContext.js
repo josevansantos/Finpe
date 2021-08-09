@@ -46,6 +46,7 @@ function AuthProvider({ children }) {
     setAuthenticated(false);
     localStorage.removeItem('token');
     api.defaults.headers.Authorization = undefined;
+    window.location = '/';
   }
 
   return (

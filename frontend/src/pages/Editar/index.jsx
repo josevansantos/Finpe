@@ -42,68 +42,98 @@ const EditTransaction = (props) => {
 
   return (
     <>
-      <div className="mb-5">
-        <h1> Editar</h1>
-        <form onSubmit={editTransaction}>
-          <input
-            type="hidden"
-            name="userId"
-            id="user"
-            onChange={handleInputChange}
-            value={formValues.userId || ''}
-          />
-          <input
-            type="date"
-            name="date"
-            id="date"
-            onChange={handleInputChange}
-          />
-          <input
-            type="text"
-            id="description"
-            name="description"
-            placeholder="Descrição"
-            onChange={handleInputChange}
-            value={formValues.description || ''}
-          />
-          <input
-            type="number"
-            step="0.01"
-            id="value"
-            name="amount"
-            placeholder="0,00"
-            onChange={handleInputChange}
-            value={formValues.amount || ''}
-          />
-          <div className="form-radio">
-            <label>
-              <input
-                type="radio"
-                name="type"
-                value="expense"
-                onChange={handleInputChange}
-              />
-            </label>
-            Despesa
-            <label>
-              <input
-                type="radio"
-                name="type"
-                value="income"
-                onChange={handleInputChange}
-              />
-            </label>
-            Receita
+      <div className="container-fluid">
+        <div className="row justify-content-md-center">
+          <div>
+            <div className="login d-flex align-items-center py-5">
+              <div className="container">
+                <div className>
+                  <h1 className="mb-5 mt-5"> Editar</h1>
+                  <div className="d-flex align-items-center py-5">
+                    <form onSubmit={editTransaction}>
+                      <input
+                        className="form-control border-0 shadow-sm px-4"
+                        type="hidden"
+                        name="userId"
+                        id="user"
+                        onChange={handleInputChange}
+                        value={formValues.userId || ''}
+                      />
+                      <input
+                        className="form-control border-0 shadow-sm px-4 mb-3"
+                        type="date"
+                        name="date"
+                        id="date"
+                        onChange={handleInputChange}
+                      />
+                      <input
+                        className="form-control border-0 shadow-sm px-4 mb-3"
+                        type="text"
+                        id="description"
+                        name="description"
+                        placeholder="Descrição"
+                        onChange={handleInputChange}
+                        value={formValues.description || ''}
+                      />
+                      <input
+                        className="form-control border-0 shadow-sm px-4 mb-3"
+                        type="number"
+                        step="0.01"
+                        id="value"
+                        name="amount"
+                        placeholder="0,00"
+                        onChange={handleInputChange}
+                        value={formValues.amount || ''}
+                      />
+                      <div className="custom-control custom-radio">
+                        <label className="m-1 align-items-center">
+                          <input
+                            className="m-1 align-items-center"
+                            type="radio"
+                            name="type"
+                            value="expense"
+                            onChange={handleInputChange}
+                          />
+                        </label>
+                        Despesa
+                        <label className="m-1 align-items-center">
+                          <input
+                            className="m-1 align-items-center"
+                            type="radio"
+                            name="type"
+                            value="income"
+                            onChange={handleInputChange}
+                          />
+                        </label>
+                        Receita
+                      </div>
+                      <div className="input-group actions">
+                        <button
+                          type="button"
+                          className="btn btn-danger btn-lg btn-block rounded"
+                        >
+                          Cancelar
+                        </button>
+                        <button
+                          type="submit"
+                          className="btn btn-success btn-lg btn-block rounded"
+                        >
+                          Salvar
+                        </button>
+                        <a
+                          className="btn btn-info btn-lg btn-block rounded"
+                          href="/transaction/create"
+                        >
+                          Voltar
+                        </a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="input-group actions">
-            <button type="button" className="button cancel">
-              Cancelar
-            </button>
-            <button type="submit" className="button-green">
-              Salvar
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </>
   );

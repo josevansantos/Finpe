@@ -36,7 +36,11 @@ class TransactionController {
 
   async store(req, res) {
     try {
-      const transaction = await TransactionModel.create(req.body);
+      const tra = {
+        ...req.body,
+        userId: req.userId,
+      };
+      const transaction = await TransactionModel.create(tra);
       return res.status(200).json(transaction);
     } catch (err) {
       return res.status(400).json({ error: err.message });
