@@ -82,12 +82,12 @@ const CreateTransaction = ({ fechaModal }) => {
               Receita
             </div>
             <div className="input-group actions">
-              <a
-                href="/dashboard"
+              {/* <button
+                type="submit"
                 className="btn btn-danger btn-lg btn-block rounded"
               >
                 Cancelar
-              </a>
+              </button> */}
               <button
                 className="btn btn-success btn-lg btn-block rounded"
                 type="submit"

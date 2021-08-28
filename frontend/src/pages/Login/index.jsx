@@ -53,7 +53,7 @@ const UserLogin = () => {
                       ''
                     )}
                     <form onSubmit={loginSubmit}>
-                      <h1 className="mb-5 mt-5">Login</h1>
+                      <h1 className="mb-5 mt-5">Finpe</h1>
                       <div className="form-group mb-3 mt-5">
                         <label htmlFor="email">E-mail</label>
                         <input

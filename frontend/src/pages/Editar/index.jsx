@@ -38,6 +38,7 @@ const EditTransaction = (props) => {
       .then((response) => {
         console.log('response:', response);
       });
+    window.location = '/dashboard';
   };
 
   return (
@@ -120,12 +121,12 @@ const EditTransaction = (props) => {
                         >
                           Salvar
                         </button>
-                        <a
+                        {/* <a
                           className="btn btn-info btn-lg btn-block rounded"
                           href="/transaction/create"
                         >
                           Voltar
-                        </a>
+                        </a> */}
                       </div>
                     </form>
                   </div>
